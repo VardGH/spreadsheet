@@ -2,6 +2,37 @@
 #include <iostream>
 #include "stringcell.hpp"
 
+SpreadSheet::SpreadSheet(const int row, const int col)
+    : m_cells(row, std::vector<Cell*>(col, nullptr))
+{
+}
+
+SpreadSheet::SpreadSheet(const SpreadSheet& other)
+    : m_cells(other.m_cells)
+{
+}
+
+SpreadSheet::SpreadSheet(SpreadSheet&& other)
+    : m_cells(std::move(other.m_cells))
+{
+}
+
+SpreadSheet& SpreadSheet::operator=(const SpreadSheet& other)
+{
+    if (this != &other){
+        m_cells = other.m_cells;
+    }
+    return *this;
+}
+
+SpreadSheet& SpreadSheet::operator=(SpreadSheet&& other)
+{
+    if (this != &other) {
+        m_cells = std::move(other.m_cells);
+    }
+    return *this;
+}
+
 bool SpreadSheet::isValidCell(const int row, const int col) const
 {
     return row >= 0 && row < m_cells.size() && col >= 0 && col < m_cells[0].size();
