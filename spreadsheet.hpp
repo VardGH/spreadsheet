@@ -11,10 +11,10 @@ class SpreadSheet
 public:
     SpreadSheet(const int row = 2, const int col = 2);
     SpreadSheet(const SpreadSheet& other);  // copy ctor
-    SpreadSheet(SpreadSheet&& other);   // move ctor
+    SpreadSheet(SpreadSheet&& other) noexcept;   // move ctor
 
     SpreadSheet& operator=(const SpreadSheet& other); // copy assignment operator
-    SpreadSheet& operator=(SpreadSheet&& other); // Move assignment operator
+    SpreadSheet& operator=(SpreadSheet&& other) noexcept; // Move assignment operator
 
     ~SpreadSheet() = default;
 

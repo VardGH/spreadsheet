@@ -12,7 +12,7 @@ SpreadSheet::SpreadSheet(const SpreadSheet& other)
 {
 }
 
-SpreadSheet::SpreadSheet(SpreadSheet&& other)
+SpreadSheet::SpreadSheet(SpreadSheet&& other) noexcept
     : m_cells(std::move(other.m_cells))
 {
 }
@@ -25,7 +25,7 @@ SpreadSheet& SpreadSheet::operator=(const SpreadSheet& other)
     return *this;
 }
 
-SpreadSheet& SpreadSheet::operator=(SpreadSheet&& other)
+SpreadSheet& SpreadSheet::operator=(SpreadSheet&& other) noexcept
 {
     if (this != &other) {
         m_cells = std::move(other.m_cells);
